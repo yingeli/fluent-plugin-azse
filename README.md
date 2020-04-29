@@ -16,10 +16,10 @@ To collect Azure Scheduled Events in Azure Monitor,
 <source>
   type azse
   log_level debug
-  tag_prefix oms.api
+  tag_prefix oms.api.ScheduledEvents
 </source>
 
-<filter oms.api.azse.**>
+<filter oms.api.ScheduledEvents.**>
   type record_transformer
   enable_ruby
   <record>
@@ -29,13 +29,13 @@ To collect Azure Scheduled Events in Azure Monitor,
   </record>
 </filter>
 
-<match oms.api.azse.**>
+<match oms.api.ScheduledEvents.**>
   type out_oms_api
   log_level debug
 
   buffer_chunk_limit 5m
   buffer_type file
-  buffer_path /var/opt/microsoft/omsagent/<workspace id>/state/out_oms_api_azse*.buffer
+  buffer_path /var/opt/microsoft/omsagent/<workspace id>/state/out_oms_api_ScheduledEvents*.buffer
   buffer_queue_limit 10
   flush_interval 20s
   retry_limit 10

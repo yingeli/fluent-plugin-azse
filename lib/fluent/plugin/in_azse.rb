@@ -51,7 +51,7 @@ module Fluent
           unless doc.nil?
             new_di = doc["DocumentIncarnation"]
             if new_di != di
-              prefix = @tag_prefix ? @tag_prefix + '.azse' : 'azse'
+              prefix = @tag_prefix ? @tag_prefix : ''
               emit(prefix, doc["Events"])
               di = new_di
             end
