@@ -19,6 +19,16 @@ To collect Azure Scheduled Events in Azure Monitor,
   tag_prefix oms.api
 </source>
 
+<filter oms.api.azse.**>
+  type record_transformer
+  enable_ruby
+  <record>
+    ResourceName ScheduledEvents
+    Computer ${OMS::Common.get_hostname}
+    ResourceId ${OMS::Common.get_hostname}
+  </record>
+</filter>
+
 <match oms.api.azse.**>
   type out_oms_api
   log_level debug
