@@ -15,7 +15,6 @@ To collect Azure Scheduled Events in Azure Monitor,
 ```
 <source>
   type azse
-  log_level debug
   tag_prefix oms.api.ScheduledEvents
 </source>
 
@@ -31,7 +30,7 @@ To collect Azure Scheduled Events in Azure Monitor,
 
 <match oms.api.ScheduledEvents.**>
   type out_oms_api
-  log_level debug
+  log_level info
 
   buffer_chunk_limit 5m
   buffer_type file
